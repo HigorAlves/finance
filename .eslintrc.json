@@ -1,3 +1,9 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "next/core-web-vitals",
+    "@higoralves/eslint-config/react"
+  ],
+  "rules": {
+    "space-before-function-paren": "off"
+  }
 }
