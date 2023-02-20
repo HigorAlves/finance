@@ -1,26 +1,24 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 
-import { Navbar, UnstyledButton, Tooltip, Title } from '@mantine/core'
+import {
+  Navbar,
+  UnstyledButton,
+  Tooltip,
+  Title,
+  Container,
+} from '@mantine/core'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 import { useStyles } from './dashboard.styles'
+const mainLinksMockdata = [{ icon: <div>as</div>, label: 'Home' }]
 
-const mainLinksMockdata = [
-  { icon: <div>as</div>, label: 'Home' },
-  { icon: <div>as</div>, label: 'Settings' }
-]
-
-const linksMockdata = [
-  'Security',
-  'Settings',
-  'Dashboard',
-  'Releases',
-  'Account',
-  'Orders',
-  'Clients',
-  'Databases',
-  'Pull Requests',
-  'Open Issues',
-  'Wiki pages',
+const innerMenuLinks = [
+  { link: '/dashboard', name: 'Dashboard' },
+  { link: '/dashboard/activity', name: 'Activity' },
+  { link: '/dashboard/account', name: 'Wallets' },
+  { link: '/dashboard/account', name: 'Budgets' },
+  { link: '/dashboard/account', name: 'Account' },
 ]
 
 interface Props {
@@ -29,8 +27,8 @@ interface Props {
 
 export function DashboardLayout({ children }: Props) {
   const { classes, cx } = useStyles()
-  const [active, setActive] = useState('Releases')
-  const [activeLink, setActiveLink] = useState('Settings')
+  const { pathname } = useRouter()
+  const [active, setActive] = useState('Dashboard')
 
   const mainLinks = mainLinksMockdata.map((link) => (
     <Tooltip
@@ -51,20 +49,17 @@ export function DashboardLayout({ children }: Props) {
     </Tooltip>
   ))
 
-  const links = linksMockdata.map((link) => (
-    <a
+  const links = innerMenuLinks.map((option) => (
+    <Link
+      key={option.link}
+      href={option.link}
       className={cx(classes.link, {
-        [classes.linkActive]: activeLink === link
+        [classes.linkActive]: pathname === option.link,
       })}
-      href="/"
-      onClick={(event) => {
-        event.preventDefault()
-        setActiveLink(link)
-      }}
-      key={link}
+      onClick={() => setActive(option.name)}
     >
-      {link}
-    </a>
+      {option.name}
+    </Link>
   ))
 
   return (
@@ -83,7 +78,8 @@ export function DashboardLayout({ children }: Props) {
           </div>
         </Navbar.Section>
       </Navbar>
-      {children}
+
+      <Container fluid>{children}</Container>
     </main>
   )
 }
