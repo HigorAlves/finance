@@ -1,11 +1,23 @@
+import { NextPage } from 'next'
+
 import { MantineProvider } from '@mantine/core'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 
+import { Layout, LayoutTypes } from '~/layout'
 import { rtlCache } from '~/rtl-cache'
 
-export default function App(props: AppProps) {
+export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+  getLayout?: LayoutTypes
+}
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout
+}
+
+export default function App(props: AppPropsWithLayout) {
   const { Component, pageProps } = props
+  const { getLayout = 'base' } = Component
 
   return (
     <>
@@ -20,10 +32,12 @@ export default function App(props: AppProps) {
       <MantineProvider
         withGlobalStyles
         withNormalizeCSS
-        theme={{ colorScheme: 'light' }}
+        theme={{ colorScheme: 'dark' }}
         emotionCache={rtlCache}
       >
-        <Component {...pageProps} />
+        <Layout layout={getLayout}>
+          <Component {...pageProps} />
+        </Layout>
       </MantineProvider>
     </>
   )
