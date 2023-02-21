@@ -1,23 +1,23 @@
-import React, { ReactElement } from 'react'
+import React, { ReactElement } from "react";
 
-import { DashboardLayout } from '~/layout/dashboard/Dashboard.layout'
+import { DashboardLayout } from "~/layout/dashboard/Dashboard.layout";
 
 export type LayoutTypes = 'base' | 'dashboard'
 
 interface LayoutProps {
-	layout: LayoutTypes
-	children: ReactElement
+  layout: LayoutTypes
+  children: ReactElement
 }
 
 export function Layout({ layout, children }: LayoutProps) {
-	function getLayout(type: LayoutTypes) {
-		const list = {
-			base: <DashboardLayout>{children}</DashboardLayout>,
-			dashboard: <DashboardLayout>{children}</DashboardLayout>
-		}
+  function getLayout(type: LayoutTypes) {
+    const list = {
+      base: <main>{children}</main>,
+      dashboard: <DashboardLayout>{children}</DashboardLayout>,
+    }
 
-		return list[layout] || <DashboardLayout>{children}</DashboardLayout>
-	}
+    return list[layout] || <DashboardLayout>{children}</DashboardLayout>
+  }
 
-	return getLayout(layout)
+  return getLayout(layout)
 }

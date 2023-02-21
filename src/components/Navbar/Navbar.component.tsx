@@ -1,22 +1,20 @@
 import React from "react";
 
 import { Navbar as Wrapper, Tooltip, UnstyledButton } from "@mantine/core";
-import { IconHome2 } from "@tabler/icons";
+import { IconHome2, IconWallet } from "@tabler/icons";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
 import { useStyles } from "./Navbar.styles";
 
 const mainLinksMockdata = [
-  { icon: IconHome2, label: 'Home', link: '/dashboard' },
+  { icon: IconHome2, label: 'Home', link: '/dashboards/' },
+  { icon: IconWallet, label: 'Wallet', link: '/dashboard/wallet' },
 ]
 
 const innerMenuLinks = [
-  { link: '/dashboard', name: 'Dashboard' },
-  { link: '/dashboard/activity', name: 'Activity' },
-  { link: '/dashboard/account', name: 'Wallets' },
-  { link: '/dashboard/account', name: 'Budgets' },
-  { link: '/dashboard/account', name: 'Account' },
+  { link: '/dashboard', name: 'Home' },
+  { link: '/dashboard/activity', name: 'Overview' },
 ]
 
 export function Navbar() {
@@ -25,11 +23,11 @@ export function Navbar() {
 
   const mainLinks = mainLinksMockdata.map((link) => (
     <Tooltip
-      label={link.label}
-      position="right"
+      key={link.link}
       withArrow
+      position="right"
+      label={link.label}
       transitionDuration={0}
-      key={link.label}
     >
       <UnstyledButton
         className={cx(classes.mainLink, {
