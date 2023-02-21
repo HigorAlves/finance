@@ -6,7 +6,6 @@
 	"rules": {
 		"space-before-function-paren": "off",
 		"comma-dangle": "off",
-		"no-tabs": "off",
-		"indent": [2, "tab"]
+		"no-tabs": "off"
 	}
 }

@@ -1,76 +1,25 @@
-import {
-	Burger,
-	Container,
-	Drawer,
-	Group,
-	Header as BaseHeader,
-	Stack
-} from '@mantine/core'
-import { useDisclosure } from '@mantine/hooks'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
+import { Avatar, Group, Header as BaseHeader } from "@mantine/core";
 
-import { Logo, SocialMediaLinks } from '~/components/Icons'
-import { ILinks } from '~/layout/base/base.layout'
+import { Logo } from "~/components";
 
-import { useStyles } from './Header.styles'
+import { useStyles } from "./Header.styles";
 
-interface HeaderMiddleProps {
-	links: Array<ILinks> | []
-}
+interface HeaderMiddleProps {}
 
-export function Header({ links }: HeaderMiddleProps) {
-	const router = useRouter()
-	const [opened, { toggle }] = useDisclosure(false)
-	const { classes, cx } = useStyles()
+export function Header(props: HeaderMiddleProps) {
+  const { classes } = useStyles()
 
-	const items = links.map((link: ILinks) => (
-		<Link
-			key={link.label}
-			href={link.link}
-			className={cx(classes.link, {
-				[classes.linkActive]: router.pathname === link.link
-			})}
-		>
-			{link.label}
-		</Link>
-	))
+  return (
+    <BaseHeader height={56} className={classes.wrapper}>
+      <Group ml={'md'}>
+        <Logo />
+      </Group>
 
-	return (
-		<BaseHeader height={56} mb={60}>
-			<Container fluid={false} className={classes.inner}>
-				<Burger
-					opened={opened}
-					onClick={toggle}
-					size='sm'
-					className={classes.burger}
-				/>
-
-				<Group className={classes.links} spacing={5}>
-					{items}
-				</Group>
-
-				<Link href={'/'}>
-					<Logo />
-				</Link>
-
-				<SocialMediaLinks
-					spacing={0}
-					className={classes.social}
-					position='right'
-					noWrap
-				/>
-			</Container>
-
-			<Drawer
-				opened={opened}
-				onClose={toggle}
-				title='Higor Alves'
-				padding='xl'
-				size='xl'
-			>
-				<Stack>{items}</Stack>
-			</Drawer>
-		</BaseHeader>
-	)
+      <Group position={'right'} mr={'md'}>
+        <Avatar color="cyan" radius="xl">
+          MK
+        </Avatar>
+      </Group>
+    </BaseHeader>
+  )
 }
