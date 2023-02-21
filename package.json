@@ -25,7 +25,8 @@
 		"release:alpha": "yarn release -- --prerelease alpha",
 		"release:beta": "yarn run release -- --prerelease beta",
 		"clean": "rimraf .husky && rimraf storybook-static && rimraf .swc && rimraf .next",
-		"prepare:husky": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\" && npx husky add .husky/pre-push \"yarn run validate\" && npx husky add .husky/commit-msg \"npx commitlint --edit $1\""
+		"prepare:husky": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\" && npx husky add .husky/pre-push \"yarn run validate\" && npx husky add .husky/commit-msg \"npx commitlint --edit $1\"",
+		"emulator": "firebase emulators:start"
 	},
 	"dependencies": {
 		"@emotion/react": "^11.10.5",

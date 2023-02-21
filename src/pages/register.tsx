@@ -1,6 +1,8 @@
+import { signInAnonymously } from "@firebase/auth";
 import { Button, createStyles, Group, Indicator, Paper, PasswordInput, Text, TextInput, Title } from "@mantine/core";
 
 import { Logo } from "~/components";
+import { initialize } from "~/services/firebase";
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -42,6 +44,12 @@ const useStyles = createStyles((theme) => ({
 
 export default function AuthenticationImage() {
   const { classes } = useStyles()
+  const { auth } = initialize()
+
+  async function handleAnonymousLogin() {
+    const result = await signInAnonymously(auth)
+    console.log(result)
+  }
 
   return (
     <div className={classes.wrapper}>
@@ -74,7 +82,9 @@ export default function AuthenticationImage() {
 
         <Group grow mt={'xl'}>
           <Button>Register</Button>
-          <Button variant={'outline'}>I just wanna test</Button>
+          <Button variant={'outline'} onClick={handleAnonymousLogin}>
+            I just wanna test
+          </Button>
         </Group>
       </Paper>
     </div>
