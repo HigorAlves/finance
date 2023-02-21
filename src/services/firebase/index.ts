@@ -1,7 +1,7 @@
-import { initializeApp } from "firebase/app";
-import { connectAuthEmulator, getAuth } from "firebase/auth";
+import { initializeApp } from 'firebase/app'
+import { connectAuthEmulator, getAuth } from 'firebase/auth'
 
-import { CONFIG } from "~/utils/config";
+import { CONFIG } from '~/utils/config'
 
 export function initialize() {
   const firebaseApp = initializeApp(CONFIG.firebase)

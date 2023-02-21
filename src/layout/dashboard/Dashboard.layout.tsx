@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react'
 
-import { AppShell } from "@mantine/core";
+import { AppShell } from '@mantine/core'
 
-import { Header } from "~/components";
-import { Navbar } from "~/components/Navbar/Navbar.component";
+import { Header } from '~/components'
+import { Navbar } from '~/components/Navbar/Navbar.component'
 
 interface Props {
   children: React.ReactNode

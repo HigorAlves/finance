@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-import { Group, Text } from "@mantine/core";
+import { Group, Text } from '@mantine/core'
 
 const DEFAULT_DIMENSION_PX = 70
 const DEFAULT_DIMENSION_PY = 100

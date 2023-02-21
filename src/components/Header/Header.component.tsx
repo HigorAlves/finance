@@ -1,8 +1,8 @@
-import { Avatar, Group, Header as BaseHeader } from "@mantine/core";
+import { Avatar, Group, Header as BaseHeader } from '@mantine/core'
 
-import { Logo } from "~/components";
+import { Logo } from '~/components'
 
-import { useStyles } from "./Header.styles";
+import { useStyles } from './Header.styles'
 
 interface HeaderMiddleProps {}
 

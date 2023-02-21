@@ -1,4 +1,4 @@
-import { Button, Container, Grid, Stack, Title } from "@mantine/core";
+import { Button, Container, Grid, Stack, Title } from '@mantine/core'
 
 export default function WalletPage() {
   return (

@@ -1,6 +1,6 @@
-import { ActionIcon, ActionIconProps } from "@mantine/core";
-import { TablerIcon } from "@tabler/icons";
-import Link from "next/link";
+import { ActionIcon, ActionIconProps } from '@mantine/core'
+import { TablerIcon } from '@tabler/icons'
+import Link from 'next/link'
 
 interface IProps extends ActionIconProps {
   Icon: TablerIcon

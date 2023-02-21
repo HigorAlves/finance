@@ -1,6 +1,6 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement } from 'react'
 
-import { DashboardLayout } from "~/layout/dashboard/Dashboard.layout";
+import { DashboardLayout } from '~/layout/dashboard/Dashboard.layout'
 
 export type LayoutTypes = 'base' | 'dashboard'
 

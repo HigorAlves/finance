@@ -1,8 +1,18 @@
-import { signInAnonymously } from "@firebase/auth";
-import { Button, createStyles, Group, Indicator, Paper, PasswordInput, Text, TextInput, Title } from "@mantine/core";
+import { signInAnonymously } from '@firebase/auth'
+import {
+  Button,
+  createStyles,
+  Group,
+  Indicator,
+  Paper,
+  PasswordInput,
+  Text,
+  TextInput,
+  Title,
+} from '@mantine/core'
 
-import { Logo } from "~/components";
-import { initialize } from "~/services/firebase";
+import { Logo } from '~/components'
+import { initialize } from '~/services/firebase'
 
 const useStyles = createStyles((theme) => ({
   wrapper: {

@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react'
 
-import { Navbar as Wrapper, Tooltip, UnstyledButton } from "@mantine/core";
-import { IconHome2, IconWallet } from "@tabler/icons";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import { Navbar as Wrapper, Tooltip, UnstyledButton } from '@mantine/core'
+import { IconHome2, IconWallet } from '@tabler/icons'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
-import { useStyles } from "./Navbar.styles";
+import { useStyles } from './Navbar.styles'
 
 const mainLinksMockdata = [
   { icon: IconHome2, label: 'Home', link: '/dashboards/' },
