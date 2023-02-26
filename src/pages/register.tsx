@@ -12,6 +12,7 @@ import {
 } from '@mantine/core'
 
 import { Logo } from '~/components'
+import { useOnAuthStateChange } from '~/hooks/useOnAuthStateChange'
 import { initialize } from '~/services/firebase'
 
 const useStyles = createStyles((theme) => ({
@@ -55,6 +56,7 @@ const useStyles = createStyles((theme) => ({
 export default function AuthenticationImage() {
   const { classes } = useStyles()
   const { auth } = initialize()
+  useOnAuthStateChange()
 
   async function handleAnonymousLogin() {
     const result = await signInAnonymously(auth)
@@ -87,11 +89,20 @@ export default function AuthenticationImage() {
           Welcome to Finance!
         </Title>
 
-        <TextInput label="Email address" placeholder="hello@gmail.com" />
-        <PasswordInput label="Password" placeholder="Your password" mt="md" />
+        <TextInput
+          disabled
+          label="Email address"
+          placeholder="hello@gmail.com"
+        />
+        <PasswordInput
+          disabled
+          label="Password"
+          placeholder="Your password"
+          mt="md"
+        />
 
         <Group grow mt={'xl'}>
-          <Button>Register</Button>
+          <Button disabled>Register</Button>
           <Button variant={'outline'} onClick={handleAnonymousLogin}>
             I just wanna test
           </Button>
